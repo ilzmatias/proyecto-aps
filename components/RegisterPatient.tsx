@@ -17,7 +17,6 @@ const RegisterPatient = () => {
       console.error('Error registrando paciente:', error)
     } else {
       console.log('Paciente registrado:', data)
-      // Puedes redirigir o mostrar un mensaje de éxito
     }
   }
 
