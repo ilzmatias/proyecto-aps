@@ -2,17 +2,21 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-      <ul>
+    <div className="bg-gray-900 min-h-screen flex flex-col justify-center items-center text-white p-6">
+      <h1 className="text-4xl font-bold mb-8">Bienvenido</h1>
+      <p className="text-xl mb-6">Elija una opción para continuar</p>
+      <ul className="space-y-4">
         <li>
-          <Link href="/register-doctor">Registrar médico</Link>
+          <Link href="/register-doctor" className="block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
+              Registrar Médico
+          </Link>
         </li>
         <li>
-          <Link href="/register-patient">Registrar paciente</Link>
+          <Link href="/register-patient" className="block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
+              Registrar Paciente
+          </Link>
         </li>
       </ul>
     </div>
   );
 }
-
