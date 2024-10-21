@@ -1,8 +1,18 @@
-import RegisterPatient from "../components/RegisterPatient";
+import Link from 'next/link';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <RegisterPatient />
-    </main>
+    <div>
+      <h1>Home</h1>
+      <ul>
+        <li>
+          <Link href="/register-doctor">Registrar médico</Link>
+        </li>
+        <li>
+          <Link href="/register-patient">Registrar paciente</Link>
+        </li>
+      </ul>
+    </div>
   );
 }
+
