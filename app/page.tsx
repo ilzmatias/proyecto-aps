@@ -16,6 +16,11 @@ export default function Home() {
               Registrar Paciente
           </Link>
         </li>
+        <li>
+          <Link href="/consultar-obras-sociales" className="block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
+              Consultar obras sociales atendidas
+          </Link>
+        </li>
       </ul>
     </div>
   );
