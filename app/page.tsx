@@ -26,6 +26,11 @@ export default function Home() {
               Consultar calendario médico
           </Link>
         </li>
+        <li>
+          <Link href="/medico-del-mes" className="block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
+              Consultar Médico del mes
+          </Link>
+        </li>
       </ul>
     </div>
   );
