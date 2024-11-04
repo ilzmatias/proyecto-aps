@@ -31,6 +31,16 @@ export default function Home() {
               Consultar Médico del mes
           </Link>
         </li>
+        <li>
+          <Link href="/consultar-citas" className="block bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
+            Consultar Citas
+          </Link>
+        </li>
+        <li>
+          <Link href="/cancelar-cita" className="block bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
+            Cancelar Cita
+          </Link>
+        </li>
       </ul>
     </div>
   );
