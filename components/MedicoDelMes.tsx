@@ -10,11 +10,6 @@ const MedicoDelMes = () => {
   useEffect(() => {
     const fetchTopDoctor = async () => {
       try {
-        // La tabla Citas tiene 4 columnas:
-        // 1. número de legajo del médico
-        // 2. fecha de la cita
-        // 3. hora de la cita
-        // 4. número de documento del paciente
         const { data, error } = await supabase
           .from('Citas')
           .select('medico_legajo, fecha')
@@ -57,7 +52,7 @@ const MedicoDelMes = () => {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white rounded-lg p-6 shadow-md max-w-md w-full">
+    <div className="bg-gray-900 text-white rounded-lg p-6 shadow-md max-w-md w-full mx-auto">
       <h2 className="text-2xl mb-4 text-center">Médico con más citas este mes</h2>
       {errorMessage ? (
         <p className="text-red-500 text-sm">{errorMessage}</p>
