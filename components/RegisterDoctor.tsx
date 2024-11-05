@@ -35,7 +35,7 @@ const RegisterDoctor = () => {
                 setErrorMessage('Error al registrar el médico. Intente nuevamente.');
             } else {
                 console.log('Médico registrado:', data);
-                setErrorMessage(null); // Si todo va bien, limpiamos cualquier mensaje de error
+                setErrorMessage(null); 
                 alert('Médico registrado con éxito');
                 setFormData({
                     legajo: '',
@@ -63,7 +63,7 @@ const RegisterDoctor = () => {
                         <input
                             type={field === 'email' ? 'email' : 'text'}
                             name={field}
-                            value={formData[field as keyof typeof formData]} // Type assertion para asegurarse que es un campo válido
+                            value={formData[field as keyof typeof formData]} 
                             onChange={handleChange}
                             className="bg-gray-100 text-black rounded-lg px-2 py-1 w-2/3"
                             required

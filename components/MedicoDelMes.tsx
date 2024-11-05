@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MedicoDelMes = () => {
   const [topDoctor, setTopDoctor] = useState<{ legajo: string; nombre: string; apellido: string } | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -10,14 +11,23 @@ const MedicoDelMes = () => {
   useEffect(() => {
     const fetchTopDoctor = async () => {
       try {
+        const date = new Date();
+        const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+        const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        const formattedFirstDay = firstDayOfMonth.toISOString().split('T')[0];
+        const formattedLastDay = lastDayOfMonth.toISOString().split('T')[0];
+        
+        // Aquí asumimos que 'fecha' en la base de datos tiene formato 'DD/MM/YYYY'
         const { data, error } = await supabase
-          .from('Citas')
+          .from('citas')
           .select('medico_legajo, fecha')
-          .eq('fecha', new Date().toISOString().slice(0, 7)); // Filtrar por mes actual
+          .gte('fecha', formattedFirstDay)
+          .lte('fecha', formattedLastDay)
 
         if (error) throw error;
 
         // Contar citas por médico
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const citasPorMedico = data.reduce((acc: any, cita: any) => {
           acc[cita.medico_legajo] = (acc[cita.medico_legajo] || 0) + 1;
           return acc;
@@ -29,7 +39,7 @@ const MedicoDelMes = () => {
         // Obtener el nombre y apellido del médico con más citas
         if (legajoMaximo) {
           const { data: doctorData, error: doctorError } = await supabase
-            .from('Doctores')
+            .from('doctors')
             .select('nombre, apellido')
             .eq('legajo', legajoMaximo)
             .single();
@@ -68,5 +78,4 @@ const MedicoDelMes = () => {
     </div>
   );
 };
-
 export default MedicoDelMes;

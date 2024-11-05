@@ -32,15 +32,11 @@ export default function Home() {
           </Link>
         </li>
         <li>
-          <Link href="/consultar-citas" className="block bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
-            Consultar Citas
+          <Link href="/consultar-citas" className="block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
+            Portal Paciente
           </Link>
         </li>
-        <li>
-          <Link href="/cancelar-cita" className="block bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md text-center transition-all duration-300">
-            Cancelar Cita
-          </Link>
-        </li>
+        
       </ul>
     </div>
   );

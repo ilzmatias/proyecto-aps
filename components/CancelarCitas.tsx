@@ -14,19 +14,20 @@ const CancelarCita = () => {
     setMessage('');
 
     try {
-      const { data, error } = await supabase
-        .from('appointments')
-        .delete()
-        .match({ dni_paciente: dni, fecha });
-
-      if (error) {
-        console.error('Error al cancelar la cita:', error);
-        setError('Error al cancelar la cita. Intente nuevamente.');
-      } else if (data.length === 0) {
-        setError('No se encontró la cita para los datos ingresados.');
-      } else {
-        setMessage('Cita cancelada con éxito.');
-      }
+      const { error } = await supabase
+      .from('citas')
+      .delete()
+      .match({ paciente_dni: dni, fecha });
+    
+   
+    
+    if (error) {
+      console.error('Error al cancelar la cita:', error);
+      setError('Error al cancelar la cita. Intente nuevamente.');
+    
+    } else {
+      setMessage('Cita cancelada con éxito.');
+    }
     } catch (err) {
       console.error('Error en la cancelación:', err);
       setError('Hubo un error al conectar con el servidor. Inténtelo de nuevo.');

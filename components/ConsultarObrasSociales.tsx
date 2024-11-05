@@ -25,6 +25,7 @@ const ConsultarObrasSociales = () => {
     }
 
     if (data.length === 0) {
+      console.log("data medicos: ", data)
       setError('No se encontró al médico. Verifica los datos ingresados.');
     } else {
       setObrasSociales(data[0].obras_sociales); // Asumiendo que social_works es un array

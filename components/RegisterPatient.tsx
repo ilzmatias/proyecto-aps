@@ -28,7 +28,7 @@ const AddPatient = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Realiza la inserción en la base de datos usando Supabase
+    
     try {
       const { data, error } = await supabase
           .from('patients')
@@ -47,7 +47,7 @@ const AddPatient = () => {
         setErrorMessage('Error al registrar el paciente. Intente nuevamente.');
       } else {
         console.log('Paciente registrado:', data);
-        setErrorMessage(null); // Si todo va bien, limpiamos cualquier mensaje de error
+        setErrorMessage(null); 
         alert('Paciente registrado con éxito');
         setFormData({
           email: '',
@@ -76,7 +76,7 @@ const AddPatient = () => {
                   <input
                       type={field === 'email' ? 'email' : 'text'}
                       name={field}
-                      value={formData[field as FormFields]} // Type assertion para asegurarse que es un campo válido
+                      value={formData[field as FormFields]} 
                       onChange={handleChange}
                       className="bg-gray-100 text-black rounded-lg px-2 py-1 w-2/3"
                       required

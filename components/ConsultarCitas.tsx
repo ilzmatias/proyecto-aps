@@ -1,10 +1,15 @@
 'use client';
-
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
-
+interface Cita {
+  id: number;
+  medico_legajo: string;
+  paciente_dni: string;
+  fecha: string;
+  hora: string;
+}
 const ConsultarCitas = () => {
-  const [citas, setCitas] = useState<any[]>([]);
+  const [citas, setCitas] = useState<Cita[]>([]);
   const [dni, setDni] = useState('');
   const [error, setError] = useState('');
 
@@ -14,9 +19,9 @@ const ConsultarCitas = () => {
 
     try {
       const { data, error } = await supabase
-        .from('appointments')
+        .from('citas')
         .select('*')
-        .eq('dni_paciente', dni);
+        .eq('paciente_dni', dni);
 
       if (error) {
         console.error('Error al obtener citas:', error);
@@ -57,7 +62,7 @@ const ConsultarCitas = () => {
             <li key={cita.id} className="bg-gray-800 p-3 rounded-lg">
               <p><strong>Fecha:</strong> {cita.fecha}</p>
               <p><strong>Hora:</strong> {cita.hora}</p>
-              <p><strong>Médico:</strong> {cita.nombre_medico}</p>
+              <p><strong>Médico Legajo:</strong> {cita.medico_legajo}</p>
             </li>
           ))}
         </ul>
